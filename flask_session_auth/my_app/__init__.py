@@ -7,7 +7,7 @@ app = Flask(__name__)
 # Avoid that error "A secret key is required to use CSRF"
 app.config['SECRET_KEY'] = os.urandom(32)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///C:/Users/bwilson/source/repos/arcgis_rest/flask_auth_test/auth_test.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///auth_test.db"
 db = SQLAlchemy(app)
 
 

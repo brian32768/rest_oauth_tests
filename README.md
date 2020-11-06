@@ -24,5 +24,3 @@ connecting with github.
 
 When I needed to start using URIs I moved over to
 Bellman so that I could easily have a secure public web site.
-
-I will be tucking it behind my nginx proxy under https://rest.wildsong.biz/ for now.
