@@ -1,0 +1,8 @@
+flask
+autopep8
+flask_wtf
+wtforms
+flask-wtf
+sqlalchemy
+flask-sqlalchemy
+Flask-Dance
