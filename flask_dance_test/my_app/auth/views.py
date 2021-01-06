@@ -37,7 +37,7 @@ def register():
  
     return render_template('register.html', form=form) 
 
-@auth.route('/login', methods=['GET', 'POST']) 
+@auth_blueprint.route('/login', methods=['GET', 'POST']) 
 def login(): 
     form = LoginForm() 
  
@@ -59,7 +59,7 @@ def login():
  
     return render_template('login.html', form=form) 
     
-@auth.route('/logout') 
+@auth_blueprint.route('/logout') 
 def logout(): 
     if 'username' in session: 
         session.pop('username') 
