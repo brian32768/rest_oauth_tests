@@ -341,6 +341,13 @@ def get_professionals(token):
 def get_records(token, options={}):
     return get_url('records', token, params={'limit':5})
 
+def search_records(token, options={}):
+    results = post_url('search/records', token, params=options)
+    for item in results:
+        print(json.dumps(item, indent=4, sort_keys=True))
+        #print(item["businessName"], ' --', item["city"])
+    return results
+
 def search_all(token, params={}):
     """ Type can be one of RECORD ADDRESS LICENSEDPROFESSIONAL ASSET CONTACT PARCEL DOCUMENT 
     """
@@ -363,6 +370,16 @@ if __name__ == "__main__":
         token = get_token(scope)
     if not token: print('no token available')
  
+    results = search_records(token, options={'parcelNumber': '51032BC01400'})
+
+    # So far I have not found TRS settings that return anything.
+    get_parcels(token, options={'parcelNumber': '51032BC01400'})
+
+    search_parcels(token, options={'parcelNumber': '51032BC01400'})
+    search_parcels(token, options={'township': 'T8N', 'range': 'R9W'})
+    search_parcels(token, options={'township': '8N', 'range': '9W'})
+    search_parcels(token, options={'township': '8N', 'range': '9W', 'section': 18})
+
     get_environment_status(token)
 
     # Does not return an error, but does not find any results, either.
@@ -417,9 +434,6 @@ if __name__ == "__main__":
     get_parcels(token, options={'limit': 10, 'city':'Astoria', 'streetName': '5th'})
 
     search_parcels(token, options={'limit': 10, 'address': {'city':'Astoria', 'streetName': '5th'}})
-
-    # So far I have not found TRS settings that return anything.
-    search_parcels(token, options={'township': 'T8N', 'range': 'R9W'})
 
     get_professionals(token) # 403 forbidden
 
